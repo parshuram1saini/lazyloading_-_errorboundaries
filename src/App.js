@@ -1,23 +1,13 @@
-import React from "react";
-import Errorboundary from "./Errorboundary";
-import Hero from "./Hero";
+import React, { Suspense, lazy } from "react";
+const Lazyloading = lazy(() => import("./lazyloading"));
 
 function App() {
   return (
-    <div>
-      <Errorboundary>
-        <Hero herosName="batman" />
-      </Errorboundary>
-      <Errorboundary>
-        <Hero herosName="superman" />
-      </Errorboundary>
-      <Errorboundary>
-        <Hero herosName="spiderman" />
-      </Errorboundary>
-      <Errorboundary>
-        <Hero herosName="joker" />
-      </Errorboundary>
-    </div>
+    <>
+      <Suspense fallback={<h4>Page Loading ....</h4>}>
+        <Lazyloading />
+      </Suspense>
+    </>
   );
 }
 
